@@ -184,6 +184,8 @@ def read_msgpack(path_or_buf, encoding='utf-8', iterator=False, **kwargs):
         if exists:
             with open(path_or_buf, 'rb') as fh:
                 return read(fh)
+        else:
+            return FileNotFoundError('{} not found'.format(path_or_buf))
 
     if isinstance(path_or_buf, bytes):
         # treat as a binary-like
